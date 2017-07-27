@@ -38,6 +38,7 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
     public void onApplicationEvent(ContextRefreshedEvent event) {
         generateVehicleVehicleModelVehicleMake();
 //        generateElementAndElementTypes();
+//        generateEmployees();
     }
 
     private void generateElementAndElementTypes(){
@@ -135,6 +136,7 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
     }
 
     private void generateEmployees(){
+
 
         List<Employee> employeeList = new ArrayList<>();
         employeeList.add(new Employee("Logan", "Moen", "Java Developer"));
