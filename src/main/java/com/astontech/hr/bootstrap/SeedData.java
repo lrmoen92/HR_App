@@ -31,10 +31,13 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     private VehicleMakeService vehicleMakeService;
 
+    @Autowired
+    private EmployeeService employeeService;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         generateVehicleVehicleModelVehicleMake();
-        generateElementAndElementTypes();
+//        generateElementAndElementTypes();
     }
 
     private void generateElementAndElementTypes(){
@@ -129,5 +132,19 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
         vehicleService.saveVehicle(vehicle8);
         vehicleService.saveVehicle(vehicle9);
         vehicleService.saveVehicle(vehicle10);
+    }
+
+    private void generateEmployees(){
+
+        List<Employee> employeeList = new ArrayList<>();
+        employeeList.add(new Employee("Logan", "Moen", "Java Developer"));
+        employeeList.add(new Employee("Andrew", "Warnke", "Boxer"));
+        employeeList.add(new Employee("Chris", "Warnke", "Maintenance Engineer"));
+        employeeList.add(new Employee("Brandon", "Koury", "Java Developer"));
+        employeeList.add(new Employee("Paul", "Anderson", "Java Developer"));
+
+        employeeService.save(employeeList);
+
+
     }
 }
