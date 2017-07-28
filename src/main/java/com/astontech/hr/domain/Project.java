@@ -18,6 +18,12 @@ public class Project {
 
     public Project(){}
 
+    public Project(String projectName, String clientName, Integer fieldRate) {
+        this.projectName = projectName;
+        this.clientName = clientName;
+        this.fieldRate = fieldRate;
+    }
+
     private String projectName;
     private String clientName;
     private Integer fieldRate;
