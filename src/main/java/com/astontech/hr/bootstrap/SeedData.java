@@ -17,9 +17,6 @@ import java.util.List;
 public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
-    private ElementService elementService;
-
-    @Autowired
     private ElementTypeService elementTypeService;
 
     @Autowired
@@ -34,11 +31,15 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private ContactService contactService;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        generateVehicleVehicleModelVehicleMake();
+//        generateVehicleVehicleModelVehicleMake();
 //        generateElementAndElementTypes();
-        generateEmployees();
+//        generateEmployees();
+//        generateContactsAddresses();
     }
 
     private void generateElementAndElementTypes(){
@@ -97,6 +98,8 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
 
     private void generateVehicleVehicleModelVehicleMake(){
 
+        //No Cascade Type
+
         VehicleMake vmFord = vehicleMakeService.saveVehicleMake(new VehicleMake("Ford"));
         VehicleMake vmChevy = vehicleMakeService.saveVehicleMake(new VehicleMake("Chevy"));
         VehicleMake vmBuick = vehicleMakeService.saveVehicleMake(new VehicleMake("Buick"));
@@ -148,5 +151,15 @@ public class SeedData implements ApplicationListener<ContextRefreshedEvent> {
         employeeService.save(employeeList);
 
 
+    }
+
+    private void generateContactsAddresses(){
+
+        //cascade type ALL
+
+        contactService.save(new Contact("999-888-2345", "This@Guy.com", new Address(123, "Fake St", "CityTown", "ProvinceState", 55443)));
+        contactService.save(new Contact("111-222-3423", "This@Gal.com", new Address(234, "Fake Ave", "CityTown", "ProvinceState", 55443)));
+        contactService.save(new Contact("333-234-2223", "This@Dude.com", new Address(345, "Fake Ln", "CityTown", "ProvinceState", 55443)));
+        contactService.save(new Contact("123-234-5566", "This@Man.com", new Address(456, "Fake Cir", "CityTown", "ProvinceState", 55443)));
     }
 }

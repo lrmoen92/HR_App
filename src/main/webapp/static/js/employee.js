@@ -42,7 +42,7 @@ function saveEmployee(){
         lastName: lastName,
         background: background,
         project: []
-    }
+    };
 
     console.log(employee);
 
